@@ -1,0 +1,246 @@
+<!DOCTYPE html> 
+
+<!--Define the metadata of the html-->
+<html>
+  <head>
+    <title>ALEX TEMA ABANKE RESUME</title>
+    <meta charset="UTF-8" >
+    <style>
+      body {
+        background-color: black;
+      }
+      .container {
+        background-color: black;
+      }
+      .picture {
+        padding-left: 5%;
+        padding-top: 5%;
+        margin-bottom:-50px;
+      }
+      
+      .move-all {
+        padding-left: 15%;
+        padding-bottom:10%;
+        margin-left: 20px;
+        margin-top: -220px;
+       
+      }
+
+      .first-name {
+       color: white;
+       font-size: 50px;
+      }
+      .last-name {
+        color:gold;
+        margin-top: -55px;
+        font-size: 50px;
+      }
+      .job-tile {
+        color: white;
+        margin-top: -50px;
+      }
+      .description{
+        color: red;
+        margin-top: -5px;
+      }
+      .visitor-count{
+        color: white;
+      
+      }
+      .visitor-count1{
+        color: white;
+      
+      }
+      .expertise{
+        color: RED;
+        background-color: black;
+        margin-top: -120px;
+        margin-left: 50px;
+
+      }
+      .title {
+        color: yellow;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        font: 20px;
+      }
+      .Degree {
+        color: white; 
+        padding-bottom: 10px;
+        padding-top: 10px;
+      }
+      .school {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      .year {
+        padding-bottom: 10px;
+        font-size: 10px;
+      }
+      .contact {
+        color: yellow;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        margin-left: 500px;
+      }
+      .socials {
+        color: yellow;
+        margin-top: -110px;
+        margin-left: 750px;
+        
+      }
+      .contact-color {
+        color: red;
+      }
+    </style>
+  </head>
+    <body>
+        <!--beginning-->
+        <!---<div class="container">-->
+
+        <div class="picture">
+          <img src="profile-pic.JPG" alt="picture-logo" height="200" >  
+        </div>
+
+        <div class="move-all">
+                  <div class="first-name">
+                    <p>
+                      Alex 
+                    </p>
+                  </div>
+
+                  <div class="last-name">
+                    <p>
+                      TEMA ABANKE
+                    </p>
+                  </div>
+                <div class="job-tile">
+                  <p>
+                    SOFTWARE/CLOUD ENGINEER
+                  </p>
+                </div>
+                <div class="description">
+                  <p>
+                    Student at the University of Maryland College Park pursuing a 
+                    Computer Science degree
+                  </p>
+                </div>
+                <div class="visitor-count1">
+                  Total visitor Count:
+                </div>
+                <div class="visitor-count"> 
+                  0
+                </div>
+
+                
+        </div>
+       </div>
+       
+       <div class="expertise" >
+        
+          <div class="title">
+            EXPERTISE
+          </div>
+        
+          <li>
+            JAVA
+          </li>
+          <li>
+            HTML CSS
+          </li>
+          <li>
+            LINUX
+          </li>
+          
+
+          <div class="title" >
+            EDUCATION
+          </div>
+          <div class="year" >
+            2023-2026
+          </div>
+          <div class="Degree">
+            BS in Computer Science
+          </div>
+          <div class="school">
+            Univeristy of Maryland College Park
+          </div>
+
+          <div class="year" >
+            2021-2022
+          </div>
+          <div class="Degree">
+            AS in Computer Science
+          </div>
+          <div class="school">
+           Hagerstown Community College
+          </div>
+
+
+          <div class="title">
+            CERTIFICATION
+          </div>
+          <div class="year" >
+            2O23
+          </div>
+          <div class="degree">
+           Built resillent, scallable, and redundant 
+          </div>
+          <div class="degree">
+           Secured applications infrastructure in AWS
+          </div>
+          <div class="contact"> 
+            CONTACT
+            <div class="contact-color"> 
+            <p> College Park, Maryland <br> atemaaabe@terpmail.umd.edu <p>
+            </div>
+          </div>
+          
+          <div class="socials">
+            SOCIALS
+            <div class="contact-color"> 
+            <p> atemaaba <br> AlexTemaAbanke <p>
+            <a href="https://www.linkedin.com/in/alextemaabanke/" target="_blank">
+            </a>
+            </div>
+          </div>
+
+        
+        
+          <script>
+           /* Trying to Use and Event Listener that detects when a page has been
+           fully loaded 
+           */
+          //Url that will be used to make an API call 
+          const url = 'https://dn0fwuz2de.execute-api.us-east-1.amazonaws.com/serverless_lambda_stage/visitor_counter'
+
+          // Make an asyn function that will handle the request to the API 
+
+          async function updateCounter(){
+          // response 
+          const response = await fetch(url);
+
+          // check if the response throws an Error 
+
+          if ( !response.ok){
+            throw new Error('Network response was not OK' + response.statusText);
+          }
+          
+          // get the data from the response
+          const data = await response.json();
+          const counterElement = document.getElementsByClassName('visitor-count')[0];
+          counterElement.innerHTML = data.visitCount;
+          console.log(data);
+
+          }
+
+        
+          updateCounter();
+          counterElement = document.getElementsByClassName('visitor-count')[0]
+
+          </script>
+    </body>
+
+
+
+</html>
